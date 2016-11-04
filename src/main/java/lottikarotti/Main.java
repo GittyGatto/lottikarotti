@@ -3,6 +3,7 @@ package lottikarotti;
 import java.util.ArrayList;
 import java.util.List;
 
+import lottikarotti.gamecontroller.GameController;
 import lottikarotti.setupservice.Board;
 import lottikarotti.setupservice.Player;
 import lottikarotti.setupservice.SetupService;
@@ -23,7 +24,7 @@ public class Main {
 
 		
 		GameController gameController = new GameController();
-		gameController.startGame(board, players);
+		gameController.startGame(board);
 		
 	}
 }

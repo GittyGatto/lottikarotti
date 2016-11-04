@@ -1,10 +1,13 @@
-package lottikarotti;
+package lottikarotti.gamecontroller;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
+import lottikarotti.setupservice.Board;
+import lottikarotti.setupservice.Player;
 
 public class Dice {
 
@@ -53,50 +56,32 @@ public class Dice {
 		return null;
 	}
 
-	public void actionOrMove(String diceResult) {
+	public void actionOrMove(Board board, Player player, String diceResult) {
 
 		if (diceResult.equals(DICE_RESULT.get(0))) {
 			Integer steps = Integer.parseInt(DICE_RESULT.get(0));
-			move(steps);
-			
+			GameController.move(board, player, steps);
 		}
 		if (diceResult.equals(DICE_RESULT.get(1))) {
 			Integer steps = Integer.parseInt(DICE_RESULT.get(1));
-			move(steps);
+			GameController.move(board,player, steps);
 		}
 		if (diceResult.equals(DICE_RESULT.get(2))) {
 			Integer steps = Integer.parseInt(DICE_RESULT.get(2));
-			move(steps);
+			GameController.move(board,player, steps);
 		}
 		if (diceResult.equals(DICE_RESULT.get(3))) {
-			karken();
+			GameController.karken(board,player);
 		}
 		if (diceResult.equals(DICE_RESULT.get(6))) {
-			planc();
+			GameController.planc(board,player);
 		}
 		if (diceResult.equals(DICE_RESULT.get(7))) {
-			bridge();
+			GameController.bridge(board,player);
 		}
 	}
 	
-	private static void move(Integer steps) {
-		System.out.println("move " + steps);		
-	}
-
-	private void bridge() {
-		System.out.println("bridge");
-	}
-
-	private void planc() {
-		System.out.println("planc");
-
-	}
-
-	private void karken() {
-		System.out.println("kraken");
-
-	}
-
+	
 	private static Integer rngInteger(Integer min, Integer max) {
 		Random rand = new Random();
 		return rand.nextInt(max - min) + min;
