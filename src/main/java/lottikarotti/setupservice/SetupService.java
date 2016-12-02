@@ -25,7 +25,7 @@ public class SetupService {
 	public List<Player> getPlayersByNumPlayers(Integer numberOfPlayers) {
 		List<Player> players = new ArrayList<Player>();
 		List<String> playerColors = Arrays.asList("red", "green", "blue");
-		List<String> rabbitNames = Arrays.asList("rabbit 1", "rabbit 2");
+		List<String> rabbitNames = Arrays.asList("1", "2");
 
 		for (int i = 0; i < numberOfPlayers; i++) {
 			Player newPlayer = new Player();
@@ -33,7 +33,15 @@ public class SetupService {
 			for (int j = 0; j < NUMBER_OF_RABBITS_PER_PLAYER; j++) {
 				Rabbit newRabbit = new Rabbit();
 				newRabbit.setColor(newPlayer.getColor());
-				newRabbit.setName(rabbitNames.get(j));
+				if (newRabbit.getColor()=="red"){
+					newRabbit.setName("r"+rabbitNames.get(j));
+				}
+				if (newRabbit.getColor()=="green"){
+					newRabbit.setName("g"+rabbitNames.get(j));
+				}
+				if (newRabbit.getColor()=="blue"){
+					newRabbit.setName("b"+rabbitNames.get(j));
+				}
 				newPlayer.addRabbit(newRabbit);
 			}
 			players.add(newPlayer);

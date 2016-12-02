@@ -20,6 +20,7 @@ public class Main {
 		players = setupService.getPlayersByNumPlayers(numberOfPlayers);
 		plancsPositions = setupService.getPlancsPosition();
 		board = setupService.getBoard(numberOfPlayers, players, plancsPositions);
+		board.showPlayers(board);
 		board.showBoard(board);
 
 		

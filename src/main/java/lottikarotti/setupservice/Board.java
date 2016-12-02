@@ -41,36 +41,53 @@ public class Board {
 	public void setFields(BoardField fields) {
 		this.fields.add(fields);
 	}
-
-	public void showBoard(Board board) {
+	
+	public void showPlayers(Board board){
 		List<String> playerInfo = new ArrayList<String>();
-		List<String> fieldInfo = new ArrayList<String>();
-		List<String> bridgeInfo = new ArrayList<String>();
-
 		System.out.println("~~~~~~~~~~~~~~~~~~~");
 
 		for (int i = 0; i < players.size(); i++) {
 			playerInfo.add("player " + players.get(i).getColor());
 			System.out.println(playerInfo.get(i));
 		}
+	}
+
+	public void showBoard(Board board) {
+		List<String> rabbitInfo = new ArrayList<String>();
+		List<String> fieldInfo = new ArrayList<String>();
+		List<String> bridgeInfo = new ArrayList<String>();
 		System.out.println("~~~~~~~~~~~~~~~~~~~");
+		
+		
+		
+		for (int i = 0; i < board.getField().size(); i++) {
+			if (board.getField().get(i).getRabbit()!=null){
+				rabbitInfo.add(board.getField().get(i).getRabbit().getName()+" ");
+			} else {
+				rabbitInfo.add("   ");
+			}
+		}
 
 		for (int i = 0; i < board.getField().size(); i++) {
 
 			if (board.getField().get(i).isHole()) {
-				fieldInfo.add("o ");
+				fieldInfo.add("o  ");
 			} else {
-				fieldInfo.add("x ");
+				fieldInfo.add("x  ");
 			}
 			if (i == 14 && board.isBridge()) {
-				bridgeInfo.add("b ");
+				bridgeInfo.add("b  ");
 			} else if (i == 22 && !board.isBridge()) {
-				bridgeInfo.add("b ");
+				bridgeInfo.add("b  ");
 			} else {
-				bridgeInfo.add("  ");
+				bridgeInfo.add("   ");
 			}
 		}
 
+		StringBuilder rabbitString = new StringBuilder();
+		for (String s : rabbitInfo) {
+			rabbitString.append(s);
+		}
 		StringBuilder fieldString = new StringBuilder();
 		for (String s : fieldInfo) {
 			fieldString.append(s);
@@ -79,6 +96,7 @@ public class Board {
 		for (String s : bridgeInfo) {
 			bridgeString.append(s);
 		}
+		System.out.println(rabbitString);
 		System.out.println(fieldString);
 		System.out.println(bridgeString);
 	}
